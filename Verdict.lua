@@ -17,9 +17,15 @@ local MovementTabGroupBox1 = MovementTab:CreateGroupbox("LocalPlayer", "Left")
 local WalkspeedSlider = MovementTabGroupBox1:CreateSlider("Walkspeed", 17, 250, 17, function(value)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
 end)
-local Jumpheightslider = MovementTabGroupBox1:CreateSlider("Jumpheight", 10, 100, 10, function(value)
+local Jumpheightslider = MovementTabGroupBox1:CreateSlider("Jumpheight", 8, 100, 8, function(value)
     game.Players.LocalPlayer.Character.Humanoid.JumpHeight = value
  end)
+
+ local MovementTabGroupBox2 = MovementTab:CreateGroupbox("Stats", "Left")
+ local winbutton = MovementTabGroupBox2:CreateButton("Win", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-511.14, 62.05, -584.68)
+end)
+
 
 
 local VisualsTab = Window:CreateTab("Visuals")
