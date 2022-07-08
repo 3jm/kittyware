@@ -85,3 +85,11 @@ local RevealTiles = VisualsTabGroupBox1:CreateToggle("Reveal Tiles", function(st
         end
     end
 end)
+local MovementTabGroupBox3 = MovementTab:CreateGroupbox("Trolling", "Right")
+local Trolling = MovementTabGroupBox3:CreateToggle("Trolling [Coming Soon]", function(state)
+    if state then
+        print("Coming soon...")
+    else
+        print("Coming soon...")
+    end
+end)
