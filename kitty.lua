@@ -206,6 +206,15 @@ local RevealTiles = VisualsTabGroupBox1:CreateToggle("Reveal Tiles", function(st
         end
     end
 end)
+local MovementTabGroupBox5 = MovementTab:CreateGroupbox("Anti AFK", "Left")
+local antiafk = MovementTabGroupBox5:CreateButton("Anti-AFK", function()
+    local vu = game:GetService("VirtualUser")
+    game:GetService("Players").LocalPlayer.Idled:connect(function()
+        vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+        wait(1)
+        vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    end)
+ end)
 local MovementTabGroupBox3 = MovementTab:CreateGroupbox("Trolling", "Right")
 local Trolling = MovementTabGroupBox3:CreateToggle("Trolling [Coming Soon]", function(state)
     if state then
