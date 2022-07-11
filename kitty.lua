@@ -1,7 +1,7 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/WetCheezit/Bracket-V2/main/src.lua"))()
 local Window, MainGUI = Library:CreateWindow("kittyware  (Public)  |  discord.gg/rotten  | Blind#2665 for help")
 
-
+local removewallbarriers = false
 
 local MovementTab = Window:CreateTab("Movement")
 local MovementTabGroupBox1 = MovementTab:CreateGroupbox("LocalPlayer", "Left")
@@ -28,11 +28,21 @@ local removedeathbarrier = MovementTabGroupBox3:CreateToggle("Remove Death Barri
 end)
 
 local removewwallbarriers = MovementTabGroupBox3:CreateButton("Remove Wall Barrier", function()
-    game:GetService("Workspace").box.Part:remove()
-    game:GetService("Workspace").box.Part:remove()
-    game:GetService("Workspace").box.Part:remove()
-    game:GetService("Workspace").box.box:remove()
-    game:GetService("Workspace").box.Part:remove()
+    if removewallbarriers == true then
+        local StarterGui = game:GetService("StarterGui")
+        StarterGui:SetCore("SendNotification", {
+            Title = "Cannot Do That",
+            Text = "You already clicked remove wall barriers",
+            Duration = 5,
+        })
+    else
+        removewallbarriers = true
+        game:GetService("Workspace").box.Part:remove()
+        game:GetService("Workspace").box.Part:remove()
+        game:GetService("Workspace").box.Part:remove()
+        game:GetService("Workspace").box.box:remove()
+        game:GetService("Workspace").box.Part:remove()
+    end
 end)
 
 local MovementTabGroupBox4 = MovementTab:CreateGroupbox("Teleports", "Left")
@@ -46,7 +56,16 @@ local viproombutton = MovementTabGroupBox4:CreateButton("VIP Room", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(67099.0078, 21210.3965, 4070.12256, -0.997561932, 0, 0.0697919354, 0, 1, 0, -0.0697919354, 0, -0.997561932)
 end)
 local abovemapbutton = MovementTabGroupBox4:CreateButton("Above Map", function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(37.465271, 170.281647, -580.249756, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+    if removewallbarriers == false then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(37.465271, 170.281647, -580.249756, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+    else
+        local StarterGui = game:GetService("StarterGui")
+        StarterGui:SetCore("SendNotification", {
+            Title = "Cannot Do That",
+            Text = "You clicked remove wall barriers, which removed the barrier used to stand on top of the map",
+            Duration = 5,
+        })
+    end
 end)
 local wheeloffourtunebutton = MovementTabGroupBox4:CreateButton("Wheel of Fortune", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(210.555405, 60.49263, -556.323608, -0.392448723, -3.90968289e-08, -0.919773877, -5.44064749e-09, 1, -4.01855864e-08, 0.919773877, -1.07666169e-08, -0.392448723)
